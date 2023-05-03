@@ -184,5 +184,9 @@ while ($ligne = $résultat->fetch_assoc()) {
 echo '</table>';
 
 
+echo "<h3>exoooo<h3>";
+$employe = $result->fetch_array();
+$employe = $result->fetch_object();
+echo $employe->prenom . '<br>';
 
 ?>
