@@ -132,7 +132,7 @@ $b = 5;
 $c = 2;
 ?>
 
-<img src="/src/if-elseif-else.jpg" alt="Image If Elseif Else">
+<img src="src/if-else.jpg" alt="Image If Else">
 
 <?php
 if ($a > $b) // Si A est supérieur à B
@@ -146,7 +146,7 @@ if ($a > $b) // Si A est supérieur à B
 echo ($a == 10) ? "A est égal à 10<br>" : "A n'est pas égal à 10<br>"; // Contracté
 ?>
 
-<img src="/src/if-elseif-else.jpg" alt="Image If Elseif Else">
+<img src="src/if.jpg" alt="Image If">
 
 <?php
 if ($a > $b && $b > $c) // Si A est supérieur à B et que dans le même temps B est supérieur à C
@@ -170,7 +170,7 @@ if ($a == 10 XOR $b == 6) // XOR : seulement l'une des 2 conditions doit être v
 }
 ?>
 
-<img src="/src/if.jpg" alt="Image If Elseif Else">
+<img src="src/if-elseif-else.jpg" alt="Image If Elseif Else">
 
 <?php
 if ($a == 8) // le double égal (==) permet de vérifier une information à l'intérieur d'une variable
@@ -333,5 +333,68 @@ if (empty($pseudo4)) {
 
 $pseudo5 = "joker";
 if (!empty($pseudo5)) {
-    echo 'la variable $pseudo5 n\'est pas vide (et est donc remplie)!<br>';
+    echo 'la variable $pseudo5 n\'est pas vide (et est donc remplie)!<br><br>';
+}
+
+
+// Les Fonctions utilisateurs
+// déclaration d'une fonction
+function calculTva()
+{
+    return 100 * 1.2;
+}
+// exécution de notre fonction
+echo calculTva() . '<br>'; // 120
+
+// déclaration d'une fonction
+function calculTva2($nombre)
+{
+    return $nombre * 1.2;
+}
+// exécution de notre fonction
+echo calculTva2(500) . '<br>'; // 600
+echo calculTva2(1000) . '<br>'; // 1200
+
+// déclaration d'une fonction
+function calculTva3($nombre, $taux)
+{
+    return $nombre * $taux;
+}
+// exécution de notre fonction
+echo "500 € avec un taux de 5.5 % font : " . calculTva3(500, 1.055) . '<br>'; // 500 € avec un taux de 5.5 % font : 527.5
+echo "1000 € avec un taux de 20 % font : " . calculTva3(1000, 1.2) . '<br>'; // 1000 € avec un taux de 20 % font : 1200
+
+// déclaration d'une fonction avec argument facultatif par défaut
+function calculTva4($nombre, $taux = 1.2)
+{
+    return $nombre * $taux;
+}
+// exécution de notre fonction
+echo calculTva4(1500) . '<br>'; // exécution de la fonction avec 1 seul argument: 1800
+echo calculTva4(800, 1.07) . '<br><br>'; // exécution de la fonction avec 2 arguments 856
+
+
+// Opérateurs Arithmétiques
+$a = 10;
+$b = 2;
+echo $a + $b . '<br>'; // affiche 12 (addition 10 + 2)
+echo $a - $b . '<br>'; // affiche 8 (soustraction 10 - 2)
+echo $a * $b . '<br>'; // affiche 20 (multiplication 10 * 2)
+echo $a / $b . '<br>'; // affiche 5 (division 10 / 2)
+echo $a % $b . '<br>'; // affiche 0 (reste de la division 10 / 2)
+$a += $b; // équivaut à $a = $a + $b (ici $a vaut 12, voir ci-dessus)...10+2
+$a -= $b; // équivaut à $a = $a - $b (ici $a vaut 12)...12-2
+
+meteo("hiver", 5); // il est possible d'exécuter une fonction avant qu'elle soit déclarée dans le code.
+function meteo($saison, $temperature) // 2 arguments attendus
+{
+    echo "Nous sommes en $saison et il fait $temperature degrés<br>"; // Nous sommes en hiver et il fait 5 degrés
+}
+
+meteo2("hiver", 1); // il est possible d'exécuter une fonction avant qu'elle soit déclarée dans le code.
+function meteo2($saison, $temperature) // 2 arguments attendus
+{
+    echo "Nous sommes en $saison et il fait $temperature degré(s)";
+    if ($temperature > 1 || $temperature < -1)
+        echo " degrés<br>"; // Nous sommes en hiver et il fait 1 degré(s)
 }
